@@ -19,6 +19,15 @@ def scrape_headlines(url):
 nation_url = "https://nation.africa/kenya"
 nation_headlines = scrape_headlines(nation_url)
 
-print("Nation - Headlines:")
-for headline in nation_headlines:
-    print("- ", headline)
+# Save headlines to a CSV file
+csv_file_path = "nation_headlines.csv"
+with open(csv_file_path, mode="w", newline="", encoding="utf-8") as file:
+    writer = csv.writer(file)
+    writer.writerow(["Headline"])
+
+    print("Nation - Headlines:")
+    for headline in nation_headlines:
+        print("- ", headline)
+        writer.writerow([headline])
+
+print("Headlines saved to", csv_file_path)
